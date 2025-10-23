@@ -1,15 +1,22 @@
 {
-    "name": "prettylogs",
-    "version": "0.0.1",
+    "name": "@millosaurs/prettylogs",
+    "version": "0.0.3",
     "main": "./dist/index.js",
     "module": "./dist/index.mjs",
     "types": "./dist/index.d.ts",
+    "homepage": "https://prettylogs.shrivatsav.dev",
+    "repository": {
+        "url": "https://github.com/Millosaurs/prettylogs"
+    },
     "scripts": {
         "build": "tsup "
     },
     "keywords": [
         "Logger",
         "Pretty Print"
+    ],
+    "files": [
+        "dist"
     ],
     "author": "Shrivatsav",
     "license": "MIT",
