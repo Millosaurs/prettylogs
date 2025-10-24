@@ -41,12 +41,13 @@ bun add @millosaurs/prettylogs
 ```typescript
 import { logger } from "@millosaurs/prettylogs";
 
-logger.info("Application started successfully");
-logger.debug("Database connection established");
-logger.warn("API rate limit at 80% capacity");
-logger.error("Failed to connect to external service");
-logger.success("User authentication completed");
+logger.info("Server started on port 3000");
+logger.debug("Fetching data from cache");
+logger.warn("Cache miss, fetching from DB");
+logger.error("Database connection failed");
+logger.success("Data cached successfully");
 ```
+<img width="1119" height="126" alt="image" src="https://github.com/user-attachments/assets/d6eb743b-f5ef-4c0b-a53c-a1164c634436" />
 
 ### Express.js Integration
 
