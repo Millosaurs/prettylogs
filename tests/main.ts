@@ -114,7 +114,7 @@ async function runTests() {
 
     // Test 8: Assertions
     console.log("\n  Test 8: Assertions");
-    const userId = 123;
+    const userId = 90;
     const username = "john_doe";
     logger.assert(userId > 0, "User ID must be positive");
     logger.assert(

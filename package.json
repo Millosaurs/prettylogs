@@ -1,6 +1,6 @@
 {
     "name": "@millosaurs/prettylogs",
-    "version": "1.0.0",
+    "version": "0.0.7",
     "description": "A beautiful, feature-rich, and highly configurable logging library for Node.js applications",
     "main": "./dist/index.js",
     "module": "./dist/index.mjs",
