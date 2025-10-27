@@ -61,6 +61,9 @@ logger.success("This is a success message");
 logger.trace("This is a trace message");
 ```
 
+<img width="403" height="129" alt="image" src="https://github.com/user-attachments/assets/e46468f1-b1e1-49f8-b989-b6adf3809658" />
+
+
 ### Multiple Arguments with Objects
 
 ```typescript
@@ -72,6 +75,9 @@ logger.info("User logged in:", {
 
 logger.success("Operation completed", "with", 3, "items processed");
 ```
+
+<img width="603" height="244" alt="image" src="https://github.com/user-attachments/assets/aa83aa11-d034-4278-9975-d8780adf6374" />
+
 
 ### Custom Logger Configuration
 
@@ -91,6 +97,9 @@ filteredLogger.debug("✗ This will NOT show");
 const verboseLogger = createLogger({ mode: "verbose" });
 verboseLogger.trace("Trace messages are visible in verbose mode");
 ```
+
+<img width="668" height="85" alt="image" src="https://github.com/user-attachments/assets/458d0876-64ff-4c65-8ca5-9cce53940e1a" />
+
 
 ## Advanced Features
 
@@ -112,6 +121,9 @@ queryLogger.debug("SELECT * FROM users WHERE active = true");
 cacheLogger.info("Cache hit for key: user:123");
 ```
 
+<img width="746" height="140" alt="image" src="https://github.com/user-attachments/assets/8d2eb557-f92c-4cf2-a890-9b5af6ec02f8" />
+
+
 ### Grouped Logs
 
 ```typescript
@@ -124,6 +136,9 @@ logger.group("🔐 User Authentication Flow", () => {
     logger.success("Token generated: abc123xyz");
 });
 ```
+
+<img width="511" height="190" alt="image" src="https://github.com/user-attachments/assets/d19c1f1f-e85d-42fd-993e-e8850b4dfbf7" />
+
 
 ### Table Output
 
@@ -149,6 +164,9 @@ logger.info("Current users in system:");
 logger.table(users);
 ```
 
+<img width="694" height="196" alt="image" src="https://github.com/user-attachments/assets/325f76cb-7d1a-45de-ba7e-2d450f4b5fd7" />
+
+
 ### Assertions
 
 ```typescript
@@ -159,6 +177,9 @@ logger.assert(userId > 0, "User ID must be positive");
 logger.assert(username.length >= 3, "Username must be at least 3 characters");
 logger.assert(userId < 100, "User ID must be less than 100"); // This will fail
 ```
+
+<img width="643" height="39" alt="image" src="https://github.com/user-attachments/assets/d5e4c495-c59f-44f2-b9a7-d6b380646737" />
+
 
 ### Spinners for Async Operations
 
@@ -189,6 +210,9 @@ const duration = stopTimer();
 logger.info(`Request completed in ${duration.toFixed(2)}ms`);
 ```
 
+<img width="485" height="131" alt="image" src="https://github.com/user-attachments/assets/a73205a6-b227-42c4-a012-c0b8a9eaa95d" />
+
+
 ### Box Messages
 
 ```typescript
@@ -207,6 +231,9 @@ logger.box(
     "ERROR",
 );
 ```
+
+<img width="458" height="323" alt="image" src="https://github.com/user-attachments/assets/2f0c42c2-9109-4fe9-9cbb-d6e271201898" />
+
 
 ### JSON Formatting
 
@@ -232,6 +259,9 @@ const complexData = {
 logger.json(complexData);
 ```
 
+<img width="534" height="407" alt="image" src="https://github.com/user-attachments/assets/f1057414-ad4b-445b-907c-a230a589a4f4" />
+
+
 ### Dividers
 
 ```typescript
@@ -243,6 +273,9 @@ logger.divider("*", 50);
 logger.info("Section 3: Results");
 logger.divider();
 ```
+
+<img width="678" height="170" alt="image" src="https://github.com/user-attachments/assets/b52da1e8-381f-4dd8-981d-e975994755c9" />
+
 
 ### File Logging
 
@@ -267,6 +300,9 @@ logger.info(`Current log file size: ${fileSize} bytes`);
 // fileLogger.clearLogFile();
 ```
 
+<img width="716" height="180" alt="image" src="https://github.com/user-attachments/assets/5001a095-a162-4989-b23a-5614a6c2ab02" />
+
+
 ### Dynamic Configuration
 
 ```typescript
@@ -282,6 +318,12 @@ dynamicLogger.info("Colors disabled");
 dynamicLogger.setConfig({ colorize: true, timestamps: false });
 dynamicLogger.info("Colors enabled, timestamps disabled");
 ```
+
+<img width="679" height="110" alt="image" src="https://github.com/user-attachments/assets/53112907-9ae4-4060-af55-cd1cc2cfd162" />
+
+<img width="703" height="83" alt="image" src="https://github.com/user-attachments/assets/9141d2f6-8aa3-462e-b93f-a79876d58f67" />
+
+
 
 ## Real-World Examples
 
@@ -327,6 +369,9 @@ app.listen(3000, () => {
 });
 ```
 
+
+
+
 ### Error Handling Scenario
 
 ```typescript
@@ -356,6 +401,9 @@ async function riskyOperation() {
     }
 }
 ```
+
+<img width="870" height="358" alt="image" src="https://github.com/user-attachments/assets/76bd4364-77ff-452a-89e7-ed01e09b14ed" />
+
 
 ### Complete API Request Flow
 
@@ -399,6 +447,8 @@ requestLogger.group("Response", () => {
 
 logger.divider("=", 70);
 ```
+
+<img width="815" height="631" alt="image" src="https://github.com/user-attachments/assets/a298fd9c-91c8-4fbc-acb5-cb63be1134e2" />
 
 ## Configuration Options
 
