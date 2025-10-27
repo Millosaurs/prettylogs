@@ -9,7 +9,7 @@ async function runTests() {
     console.log("=".repeat(70) + "\n");
 
     // Test 1: All log levels
-    console.log("📌 Test 1: All Log Levels");
+    console.log("  Test 1: All Log Levels");
     logger.info("This is an info message");
     logger.debug("This is a debug message");
     logger.warn("This is a warning message");
@@ -19,7 +19,7 @@ async function runTests() {
     await sleep(1500);
 
     // Test 2: Multiple arguments with objects
-    console.log("\n📌 Test 2: Multiple Arguments & Objects");
+    console.log("\n  Test 2: Multiple Arguments & Objects");
     logger.info("User logged in:", {
         userId: 123,
         email: "test@example.com",
@@ -30,7 +30,7 @@ async function runTests() {
     await sleep(1500);
 
     // Test 3: Timestamps with different formats
-    console.log("\n📌 Test 3: Timestamp Formats");
+    console.log("\n  Test 3: Timestamp Formats");
 
     const isoLogger = createLogger({ timestamps: true, dateFormat: "iso" });
     isoLogger.info("ISO format timestamp");
@@ -46,7 +46,7 @@ async function runTests() {
     await sleep(1500);
 
     // Test 4: Log level filtering
-    console.log("\n📌 Test 4: Custom Log Levels (Only INFO, ERROR, FATAL)");
+    console.log("\n  Test 4: Custom Log Levels (Only INFO, ERROR, FATAL)");
     const filteredLogger = createLogger({ levels: ["INFO", "ERROR", "FATAL"] });
     filteredLogger.info("✓ This will show");
     filteredLogger.debug("✗ This will NOT show");
@@ -56,7 +56,7 @@ async function runTests() {
     await sleep(1500);
 
     // Test 5: Nested child loggers
-    console.log("\n📌 Test 5: Child Loggers with Namespaces");
+    console.log("\n  Test 5: Child Loggers with Namespaces");
     const dbLogger = logger.child("database");
     const authLogger = logger.child("auth");
     const apiLogger = logger.child("api");
@@ -72,7 +72,7 @@ async function runTests() {
     await sleep(1500);
 
     // Test 6: Grouped logs
-    console.log("\n📌 Test 6: Grouped Logs");
+    console.log("\n  Test 6: Grouped Logs");
     logger.group("🔐 User Authentication Flow", () => {
         logger.info("Step 1: Validating credentials");
         logger.success("Credentials valid");
@@ -84,7 +84,7 @@ async function runTests() {
     await sleep(1500);
 
     // Test 7: Table output
-    console.log("\n📌 Test 7: Table Output");
+    console.log("\n  Test 7: Table Output");
     const users = [
         {
             id: 1,
@@ -113,7 +113,7 @@ async function runTests() {
     await sleep(1500);
 
     // Test 8: Assertions
-    console.log("\n📌 Test 8: Assertions");
+    console.log("\n  Test 8: Assertions");
     const userId = 123;
     const username = "john_doe";
     logger.assert(userId > 0, "User ID must be positive");
@@ -125,7 +125,7 @@ async function runTests() {
     await sleep(1500);
 
     // Test 9: Spinner animations
-    console.log("\n📌 Test 9: Loading Spinners");
+    console.log("\n  Test 9: Loading Spinners");
 
     const spinner1 = logger.spinner("Fetching user data from database...");
     await sleep(2000);
@@ -144,7 +144,7 @@ async function runTests() {
     await sleep(500);
 
     // Test 10: Performance timers
-    console.log("\n📌 Test 10: Performance Timers");
+    console.log("\n  Test 10: Performance Timers");
 
     // Method 1: time/timeEnd
     logger.time("database-query");
@@ -159,7 +159,7 @@ async function runTests() {
     await sleep(1000);
 
     // Test 11: Box messages
-    console.log("\n📌 Test 11: Box Messages");
+    console.log("\n  Test 11: Box Messages");
     logger.box(
         "Server started successfully!\nListening on port 3000\nEnvironment: production",
         "SUCCESS",
@@ -177,7 +177,7 @@ async function runTests() {
     await sleep(1500);
 
     // Test 12: JSON output
-    console.log("\n📌 Test 12: JSON Formatting");
+    console.log("\n  Test 12: JSON Formatting");
     const complexData = {
         user: {
             id: 123,
@@ -199,7 +199,7 @@ async function runTests() {
     await sleep(1500);
 
     // Test 13: Dividers
-    console.log("\n📌 Test 13: Dividers");
+    console.log("\n  Test 13: Dividers");
     logger.divider();
     logger.info("Section 1: Configuration");
     logger.divider("=", 40);
@@ -210,7 +210,7 @@ async function runTests() {
     await sleep(1500);
 
     // Test 14: Verbose mode
-    console.log("\n📌 Test 14: Verbose Mode");
+    console.log("\n  Test 14: Verbose Mode");
     const verboseLogger = createLogger({ mode: "verbose" });
     verboseLogger.info("Info message in verbose mode");
     verboseLogger.debug("Debug messages are visible");
@@ -219,7 +219,7 @@ async function runTests() {
     await sleep(1500);
 
     // Test 15: Silent mode
-    console.log("\n📌 Test 15: Silent Mode");
+    console.log("\n  Test 15: Silent Mode");
     console.log("(The following logs should NOT appear)");
     const silentLogger = createLogger({ mode: "silent" });
     silentLogger.info("This will NOT show");
@@ -229,7 +229,7 @@ async function runTests() {
     await sleep(1500);
 
     // Test 16: File logging with JSON format
-    console.log("\n📌 Test 16: File Logging (JSON Format)");
+    console.log("\n  Test 16: File Logging (JSON Format)");
     const fileLogger = createLogger({
         logFile: "./logs/app.log",
         timestamps: true,
@@ -245,7 +245,7 @@ async function runTests() {
     await sleep(1500);
 
     // Test 17: Dynamic configuration
-    console.log("\n📌 Test 17: Dynamic Configuration Updates");
+    console.log("\n  Test 17: Dynamic Configuration Updates");
     const dynamicLogger = createLogger();
     dynamicLogger.info("Initial message without timestamps");
 
@@ -260,7 +260,7 @@ async function runTests() {
     await sleep(1500);
 
     // Test 18: Non-colorized output
-    console.log("\n📌 Test 18: Non-Colorized Output");
+    console.log("\n  Test 18: Non-Colorized Output");
     const plainLogger = createLogger({ colorize: false, timestamps: true });
     plainLogger.info("Plain text info message");
     plainLogger.error("Plain text error message");
@@ -268,9 +268,7 @@ async function runTests() {
     await sleep(1500);
 
     // Test 19: Real-world API scenario
-    console.log(
-        "\n📌 Test 19: Real-World Scenario - Complete API Request Flow",
-    );
+    console.log("\n  Test 19: Real-World Scenario - Complete API Request Flow");
     const requestLogger = logger.child("api");
 
     logger.divider("=", 70);
@@ -325,7 +323,7 @@ async function runTests() {
     await sleep(1500);
 
     // Test 20: Error handling scenario
-    console.log("\n📌 Test 20: Error Handling Scenario");
+    console.log("\n  Test 20: Error Handling Scenario");
     const errorLogger = logger.child("error-handler");
 
     try {
@@ -349,7 +347,7 @@ async function runTests() {
     await sleep(1500);
 
     // Test 21: Log file utilities
-    console.log("\n📌 Test 21: Log File Utilities");
+    console.log("\n  Test 21: Log File Utilities");
     const utilLogger = createLogger({ logFile: "./logs/test.log" });
     utilLogger.info("Test log entry 1");
     utilLogger.info("Test log entry 2");
