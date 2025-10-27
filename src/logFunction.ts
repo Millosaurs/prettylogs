@@ -10,6 +10,10 @@ const badgeBg: Record<LogLevel, typeof chalk> = {
     SUCCESS: chalk.bgHex("#00ff0d"),
 };
 
+const getTimestamp = () => {
+    return chalk.gray(`[${new Date().toISOString()}]`);
+};
+
 const maxLabelLength = Math.max(
     ...["INFO", "DEBUG", "WARN", "ERROR", "SUCCESS"].map((l) => l.length),
 );
@@ -37,13 +41,23 @@ interface Logger {
 
 export const logger: Logger = {
     info: (msg: string) =>
-        console.log(`${badge("INFO")}: ${chalk.hex("#00bbff")(msg)}`),
+        console.log(
+            `${getTimestamp()} ${badge("INFO")}: ${chalk.hex("#00bbff")(msg)}`,
+        ),
     debug: (msg: string) =>
-        console.log(`${badge("DEBUG")}: ${chalk.hex("#ff8d00")(msg)}`),
+        console.log(
+            `${getTimestamp()} ${badge("DEBUG")}: ${chalk.hex("#ff8d00")(msg)}`,
+        ),
     warn: (msg: string) =>
-        console.log(`${badge("WARN")}: ${chalk.hex("#fff700")(msg)}`),
+        console.log(
+            `${getTimestamp()} ${badge("WARN")}: ${chalk.hex("#fff700")(msg)}`,
+        ),
     error: (msg: string) =>
-        console.log(`${badge("ERROR")}: ${chalk.hex("#f44343")(msg)}`),
+        console.log(
+            `${getTimestamp()} ${badge("ERROR")}: ${chalk.hex("#f44343")(msg)}`,
+        ),
     success: (msg: string) =>
-        console.log(`${badge("SUCCESS")}: ${chalk.hex("#00ff0d")(msg)}`),
+        console.log(
+            `${getTimestamp()} ${badge("SUCCESS")}: ${chalk.hex("#00ff0d")(msg)}`,
+        ),
 };
