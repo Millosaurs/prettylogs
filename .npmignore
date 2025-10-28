@@ -7,11 +7,28 @@ screenshots/
 # Examples directory
 examples/
 
-# Tests directory
+# Tests directory and test files
 tests/
+**/*.test.ts
+**/*.test.js
+**/*.spec.ts
+**/*.spec.js
+test/
+spec/
+__tests__/
 
 # Benchmarks directory
 benchmarks/
+
+# Test coverage and reports
+coverage/
+.nyc_output/
+*.lcov
+.coverage/
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
 
 # Development files
 .github/
@@ -24,6 +41,7 @@ benchmarks/
 vitest.config.ts
 tsup.config.ts
 tsconfig.json
+jest.config.js
 
 # Source files (only dist should be published)
 src/

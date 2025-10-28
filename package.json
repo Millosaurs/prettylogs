@@ -1,79 +1,79 @@
 {
-    "name": "@millosaurs/prettylogs",
-    "version": "0.0.7",
-    "description": "A beautiful, feature-rich, and highly configurable logging library for Node.js applications",
-    "main": "./dist/index.js",
-    "module": "./dist/index.mjs",
-    "types": "./dist/index.d.ts",
-    "homepage": "https://prettylogs.shrivatsav.dev",
-    "repository": {
-        "url": "https://github.com/Millosaurs/prettylogs"
-    },
-    "scripts": {
-        "build": "tsup",
-        "build:watch": "tsup --watch",
-        "dev": "tsx tests/main.ts",
-        "test": "vitest",
-        "test:watch": "vitest --watch",
-        "test:ui": "vitest --ui",
-        "test:coverage": "vitest --coverage",
-        "typecheck": "tsc --noEmit",
-        "lint": "eslint src tests --ext .ts,.tsx",
-        "lint:fix": "eslint src tests --ext .ts,.tsx --fix",
-        "format": "prettier --write \"src/**/*.{ts,tsx,json,md}\" \"tests/**/*.{ts,tsx,json,md}\" \"*.{json,md}\"",
-        "format:check": "prettier --check \"src/**/*.{ts,tsx,json,md}\" \"tests/**/*.{ts,tsx,json,md}\" \"*.{json,md}\"",
-        "clean": "rimraf dist",
-        "prepublishOnly": "npm run clean && npm run build && npm run test && npm run lint",
-        "release:patch": "npm version patch && npm publish",
-        "release:minor": "npm version minor && npm publish",
-        "release:major": "npm version major && npm publish"
-    },
-    "keywords": [
-        "logger",
-        "logging",
-        "log",
-        "console",
-        "debug",
-        "colorful",
-        "chalk",
-        "typescript",
-        "nodejs",
-        "pretty-print",
-        "formatter",
-        "winston",
-        "pino",
-        "bunyan",
-        "terminal",
-        "cli"
-    ],
-    "files": [
-        "dist",
-        "README.md",
-        "LICENSE"
-    ],
-    "author": "Shrivatsav",
-    "license": "MIT",
-    "engines": {
-        "node": ">=16.0.0"
-    },
-    "devDependencies": {
-        "@types/bun": "latest",
-        "@types/node": "^20.19.23",
-        "@typescript-eslint/eslint-plugin": "^7.18.0",
-        "@typescript-eslint/parser": "^7.18.0",
-        "@vitest/coverage-v8": "^1.6.1",
-        "@vitest/ui": "^1.6.1",
-        "eslint": "^8.57.1",
-        "eslint-config-prettier": "^9.1.2",
-        "eslint-plugin-prettier": "^5.5.4",
-        "prettier": "^3.6.2",
-        "rimraf": "^5.0.10",
-        "tsup": "^8.5.0",
-        "tsx": "^4.20.6",
-        "typescript": "^5.9.3",
-        "vitest": "^4.0.4"
-    },
-    "dependencies": {
-        "chalk": "^5.6.2"
-    }
+  "name": "@millosaurs/prettylogs",
+  "version": "0.0.8",
+  "description": "A beautiful, feature-rich, and highly configurable logging library for Node.js applications",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "homepage": "https://prettylogs.shrivatsav.dev",
+  "repository": {
+    "url": "https://github.com/Millosaurs/prettylogs"
+  },
+  "scripts": {
+    "build": "tsup",
+    "build:watch": "tsup --watch",
+    "dev": "tsx tests/main.ts",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src tests --ext .ts,.tsx",
+    "lint:fix": "eslint src tests --ext .ts,.tsx --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx,json,md}\" \"tests/**/*.{ts,tsx,json,md}\" \"*.{json,md}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,json,md}\" \"tests/**/*.{ts,tsx,json,md}\" \"*.{json,md}\"",
+    "clean": "rimraf dist",
+    "prepublishOnly": "npm run clean && npm run build && npm run lint",
+    "release:patch": "npm version patch && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish"
+  },
+  "keywords": [
+    "logger",
+    "logging",
+    "log",
+    "console",
+    "debug",
+    "colorful",
+    "chalk",
+    "typescript",
+    "nodejs",
+    "pretty-print",
+    "formatter",
+    "winston",
+    "pino",
+    "bunyan",
+    "terminal",
+    "cli"
+  ],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "author": "Shrivatsav",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/node": "^20.19.23",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "@vitest/coverage-v8": "^1.6.1",
+    "@vitest/ui": "^1.6.1",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^9.1.2",
+    "eslint-plugin-prettier": "^5.5.4",
+    "prettier": "^3.6.2",
+    "rimraf": "^5.0.10",
+    "tsup": "^8.5.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.4"
+  },
+  "dependencies": {
+    "chalk": "^5.6.2"
+  }
 }

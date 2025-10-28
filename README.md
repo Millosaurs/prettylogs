@@ -521,7 +521,6 @@ MIT License - see [LICENSE](./LICENSE) file for details.
 
 ---
 
-Made with ❤️ by [Shrivatsav](https://github.com/shrivatsav) and the
-[PrettyLogs community](https://github.com/Millosaurs/prettylogs/graphs/contributors).
+Made with ❤️ by [Millosaurs](https://github.com/Millosaurs)
 
 **Star ⭐ this repository if you find it useful!**
