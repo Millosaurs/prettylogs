@@ -50,7 +50,6 @@ tests/
 # documentation and examples
 SCREENSHOT_GUIDE.md
 screenshots/
-examples/
 benchmarks/
 
 # temporary files
