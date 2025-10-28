@@ -1,0 +1,58 @@
+# Documentation and guides
+SCREENSHOT_GUIDE.md
+
+# Screenshots directory
+screenshots/
+
+# Examples directory
+examples/
+
+# Tests directory
+tests/
+
+# Benchmarks directory
+benchmarks/
+
+# Development files
+.github/
+.vscode/
+.idea/
+
+# Configuration files
+.eslintrc.json
+.prettierrc.json
+vitest.config.ts
+tsup.config.ts
+tsconfig.json
+
+# Source files (only dist should be published)
+src/
+
+# Lock files
+bun.lock
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+*.swp
+*.swo
+*~
+
+# Build artifacts
+*.tsbuildinfo
+.cache

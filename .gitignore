@@ -5,14 +5,21 @@ node_modules
 out
 dist
 *.tgz
+build/
 
 # code coverage
 coverage
 *.lcov
+.nyc_output
 
 # logs
 logs
+*.log
 _.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
 report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 
 # dotenv environment variable files
@@ -26,9 +33,66 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 .eslintcache
 .cache
 *.tsbuildinfo
+.npm
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
 
-# IntelliJ based IDEs
-.idea
+# testing
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+tests/
 
-# Finder (MacOS) folder config
+# documentation and examples
+SCREENSHOT_GUIDE.md
+screenshots/
+examples/
+benchmarks/
+
+# temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Package manager lock files (keep only one)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+# Keep bun.lock as it's the primary package manager
+
+# Build artifacts
+*.d.ts.map
+*.js.map
+
+# Documentation build
+docs/build/
+.docusaurus/
+
+# Misc
+*.pid
+*.seed
+*.pid.lock
+.sass-cache/
+connect.lock
+typings/
