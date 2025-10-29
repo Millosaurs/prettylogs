@@ -1,4 +1,4 @@
-# 🎨 PrettyLogs
+# PrettyLogs
 
 A professional, high-performance logging library for Node.js applications featuring beautiful
 console output, comprehensive file logging, and extensive customization options.
@@ -8,39 +8,39 @@ console output, comprehensive file logging, and extensive customization options.
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org)
 [![Node.js](https://img.shields.io/badge/Node.js-16%2B-green.svg)](https://nodejs.org)
 
-## ✨ Features
+## Features
 
-### 🎯 Core Logging Features
+### Core Logging Features
 
-- **🌈 Color-Coded Output** - Distinct colors for each log level with customizable themes
-- **📍 Centered Badges** - Perfectly aligned log level indicators for consistent formatting
-- **🏷️ Multiple Log Levels** - TRACE, DEBUG, INFO, WARN, ERROR, FATAL, SUCCESS
-- **⏰ Flexible Timestamps** - ISO, locale, unix, and short formats
-- **🔍 Smart Log Filtering** - Level-based filtering with minimum level thresholds
-- **👶 Child Loggers** - Create namespaced loggers for better organization
-- **📊 Rich Data Display** - Tables, JSON, boxes, and dividers
+- **Color-Coded Output** - Distinct colors for each log level with customizable themes
+- **Centered Badges** - Perfectly aligned log level indicators for consistent formatting
+- **Multiple Log Levels** - TRACE, DEBUG, INFO, WARN, ERROR, FATAL, SUCCESS
+- **Flexible Timestamps** - ISO, locale, unix, and short formats
+- **Smart Log Filtering** - Level-based filtering with minimum level thresholds
+- **Child Loggers** - Create namespaced loggers for better organization
+- **Rich Data Display** - Tables, JSON, boxes, and dividers
 
-### 🚀 Advanced Features
+### Advanced Features
 
-- **📁 File Logging** - Text, JSON, and structured formats with rotation
-- **⚡ Async File Writing** - High-performance buffered file operations
-- **🔄 Log Rotation** - Automatic file rotation with size limits and retention
-- **🧵 Multi-threaded Safe** - Concurrent logging from multiple sources
-- **📈 Performance Monitoring** - Built-in timers and profiling tools
-- **🎪 Interactive Elements** - Spinners, progress indicators, and grouped logs
-- **🌍 Environment-Aware** - Automatic configuration based on NODE_ENV
-- **🔧 Dynamic Configuration** - Change settings on the fly
-- **💾 Memory Efficient** - Optimized for minimal memory footprint
+- **File Logging** - Text, JSON, and structured formats with rotation
+- **Async File Writing** - High-performance buffered file operations
+- **Log Rotation** - Automatic file rotation with size limits and retention
+- **Multi-threaded Safe** - Concurrent logging from multiple sources
+- **Performance Monitoring** - Built-in timers and profiling tools
+- **Interactive Elements** - Spinners, progress indicators, and grouped logs
+- **Environment-Aware** - Automatic configuration based on NODE_ENV
+- **Dynamic Configuration** - Change settings on the fly
+- **Memory Efficient** - Optimized for minimal memory footprint
 
-### 🛠️ Developer Experience
+### Developer Experience
 
-- **📚 Full TypeScript Support** - Complete type definitions included
-- **🧪 Comprehensive Testing** - Unit, integration, and performance tests
-- **📖 Rich Documentation** - Detailed API docs and examples
-- **🎨 ESM & CommonJS** - Support for both module systems
-- **🔍 Zero Dependencies** - Only chalk for colors (optional)
+- **Full TypeScript Support** - Complete type definitions included
+- **Comprehensive Testing** - Unit, integration, and performance tests
+- **Rich Documentation** - Detailed API docs and examples
+- **ESM & CommonJS** - Support for both module systems
+- **Zero Dependencies** - Only chalk for colors (optional)
 
-## 📦 Installation
+## Installation
 
 ```bash
 npm install @millosaurs/prettylogs
@@ -59,7 +59,7 @@ pnpm add @millosaurs/prettylogs
 bun add @millosaurs/prettylogs
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Basic Usage
 
@@ -102,7 +102,7 @@ const logger = createEnvironmentLogger();
 logger.info("Environment-specific logging");
 ```
 
-## 📋 Log Levels
+## Log Levels
 
 | Level   | Numeric | Description                  | Color    |
 | ------- | ------- | ---------------------------- | -------- |
@@ -114,7 +114,7 @@ logger.info("Environment-specific logging");
 | FATAL   | 5       | Fatal errors (exits process) | Dark Red |
 | SUCCESS | 2       | Success messages             | Green    |
 
-## 🎨 Advanced Examples
+## Advanced Examples
 
 ### Web Server Logging
 
@@ -214,7 +214,7 @@ logger.table(users);
 logger.json(complexObject, "DEBUG");
 
 // Box important messages
-logger.box("🚀 Development server ready!\nRunning on http://localhost:3000");
+logger.box("Development server ready!\nRunning on http://localhost:3000");
 ```
 
 ### Performance Monitoring
@@ -258,7 +258,7 @@ logger.clearLogFile();
 console.log(`Log file size: ${logger.getLogFileSize()} bytes`);
 ```
 
-## ⚙️ Configuration Options
+## Configuration Options
 
 ```javascript
 const logger = createLogger({
@@ -291,7 +291,7 @@ const logger = createLogger({
 });
 ```
 
-## 🎯 Production Best Practices
+## Production Best Practices
 
 ### High-Performance Setup
 
@@ -355,7 +355,7 @@ function withCorrelation(correlationId, fn) {
 }
 ```
 
-## 🧪 Testing Integration
+## Testing Integration
 
 ```javascript
 import { createLogger } from "@millosaurs/prettylogs";
@@ -375,7 +375,7 @@ const mockLogger = {
 };
 ```
 
-## 📊 Performance
+## Performance
 
 PrettyLogs is optimized for high-performance applications:
 
@@ -386,7 +386,7 @@ PrettyLogs is optimized for high-performance applications:
 - **Memory efficient** - Minimal memory allocation per log
 - **Circular reference safe** - Handles complex objects gracefully
 
-## 🔧 Migration Guide
+## Migration Guide
 
 ### From Console.log
 
@@ -432,7 +432,7 @@ const { createLogger } = require("@millosaurs/prettylogs");
 const logger = createLogger({ minLevel: "INFO" });
 ```
 
-## 🛠️ Development
+## Development
 
 ### Building
 
@@ -465,11 +465,11 @@ npm run typecheck     # TypeScript type checking
 node benchmarks/run.js    # Run performance benchmarks
 ```
 
-## 📚 API Documentation
+## API Documentation
 
 For detailed API documentation, see [docs/API.md](./docs/API.md).
 
-## 🌟 Examples
+## Examples
 
 Check out the [examples directory](./examples/) for complete working examples:
 
@@ -478,7 +478,7 @@ Check out the [examples directory](./examples/) for complete working examples:
 - [CLI Application](./examples/cli-app.js) - Command-line tool logging
 - [Error Handling](./examples/error-handling.js) - Production error patterns
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Please see our [Contributing Guide](./CONTRIBUTING.md) for details.
 
@@ -492,24 +492,24 @@ npm run build
 npm test
 ```
 
-## 📄 License
+## License
 
 MIT License - see [LICENSE](./LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **Chalk** - For beautiful terminal colors
 - **Node.js Community** - For inspiration and best practices
 - **Contributors** - Everyone who has contributed to making this library better
 
-## 📞 Support
+## Support
 
-- 📖 [Documentation](https://prettylogs.shrivatsav.dev)
-- 🐛 [Issue Tracker](https://github.com/Millosaurs/prettylogs/issues)
-- 💬 [Discussions](https://github.com/Millosaurs/prettylogs/discussions)
-- 📧 [Email Support](mailto:support@prettylogs.dev)
+- [Documentation](https://prettylogs.shrivatsav.dev)
+- [Issue Tracker](https://github.com/Millosaurs/prettylogs/issues)
+- [Discussions](https://github.com/Millosaurs/prettylogs/discussions)
+- [Email Support](mailto:support@prettylogs.dev)
 
-## 🗺️ Roadmap
+## Roadmap
 
 - [ ] **Plugin System** - Custom formatters and outputs
 - [ ] **Log Streaming** - WebSocket and SSE support
@@ -521,6 +521,6 @@ MIT License - see [LICENSE](./LICENSE) file for details.
 
 ---
 
-Made with ❤️ by [Millosaurs](https://github.com/Millosaurs)
+Made by [Millosaurs](https://github.com/Millosaurs)
 
-**Star ⭐ this repository if you find it useful!**
+**Star this repository if you find it useful!**
