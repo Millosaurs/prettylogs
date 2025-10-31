@@ -1,44 +1,31 @@
 # PrettyLogs
 
-A professional, high-performance logging library for Node.js applications featuring beautiful
-console output, comprehensive file logging, and extensive customization options.
+Modern, high-performance logging library for Node.js with beautiful console output, comprehensive file logging, and extensive customization options.
 
 [![npm version](https://badge.fury.io/js/@millosaurs%2Fprettylogs.svg)](https://badge.fury.io/js/@millosaurs%2Fprettylogs)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org)
-[![Node.js](https://img.shields.io/badge/Node.js-16%2B-green.svg)](https://nodejs.org)
+[![Node.js](https://img.shields.io/badge/Node.js-18%2B-green.svg)](https://nodejs.org)
 
 ## Features
 
-### Core Logging Features
+**Core Capabilities**
+- Multiple log levels with color-coded output
+- Structured and JSON logging formats
+- File logging with automatic rotation
+- Async and buffered file operations
+- Child loggers with namespacing
+- Built-in performance monitoring
+- Environment-aware configuration
+- Full TypeScript support
 
-- **Color-Coded Output** - Distinct colors for each log level with customizable themes
-- **Centered Badges** - Perfectly aligned log level indicators for consistent formatting
-- **Multiple Log Levels** - TRACE, DEBUG, INFO, WARN, ERROR, FATAL, SUCCESS
-- **Flexible Timestamps** - ISO, locale, unix, and short formats
-- **Smart Log Filtering** - Level-based filtering with minimum level thresholds
-- **Child Loggers** - Create namespaced loggers for better organization
-- **Rich Data Display** - Tables, JSON, boxes, and dividers
-
-### Advanced Features
-
-- **File Logging** - Text, JSON, and structured formats with rotation
-- **Async File Writing** - High-performance buffered file operations
-- **Log Rotation** - Automatic file rotation with size limits and retention
-- **Multi-threaded Safe** - Concurrent logging from multiple sources
-- **Performance Monitoring** - Built-in timers and profiling tools
-- **Interactive Elements** - Spinners, progress indicators, and grouped logs
-- **Environment-Aware** - Automatic configuration based on NODE_ENV
-- **Dynamic Configuration** - Change settings on the fly
-- **Memory Efficient** - Optimized for minimal memory footprint
-
-### Developer Experience
-
-- **Full TypeScript Support** - Complete type definitions included
-- **Comprehensive Testing** - Unit, integration, and performance tests
-- **Rich Documentation** - Detailed API docs and examples
-- **ESM & CommonJS** - Support for both module systems
-- **Zero Dependencies** - Only chalk for colors (optional)
+**Developer Tools**
+- Timer and profiling utilities
+- Table and JSON formatters
+- Progress indicators and spinners
+- Assertion helpers
+- Group and box formatting
+- Dynamic configuration
 
 ## Installation
 
@@ -46,77 +33,210 @@ console output, comprehensive file logging, and extensive customization options.
 npm install @millosaurs/prettylogs
 ```
 
-Using other package managers:
+Alternative package managers:
 
 ```bash
-# Yarn
 yarn add @millosaurs/prettylogs
-
-# pnpm
 pnpm add @millosaurs/prettylogs
-
-# Bun
 bun add @millosaurs/prettylogs
 ```
 
 ## Quick Start
 
-### Basic Usage
-
 ```javascript
 import { logger } from "@millosaurs/prettylogs";
 
-// Simple logging
+// Basic logging
 logger.info("Application started");
-logger.warn("Memory usage high", { usage: "85%" });
-logger.error("Database connection failed", error);
-logger.success("User created successfully", { userId: 123 });
-```
+logger.warn("High memory usage", { usage: "85%" });
+logger.error("Connection failed", { error: err.message });
+logger.success("Operation completed", { userId: 123 });
 
-### Custom Logger
-
-```javascript
-import { createLogger } from "@millosaurs/prettylogs";
-
-const customLogger = createLogger({
-  timestamps: true,
-  logFile: "./logs/app.log",
-  colorize: true,
-  logFormat: "json",
-  minLevel: "INFO",
+// With structured data
+logger.info("User action", {
+  userId: 123,
+  action: "login",
+  timestamp: Date.now(),
 });
-
-customLogger.info("Custom logger message");
-```
-
-### Environment-Aware Logger
-
-```javascript
-import { createEnvironmentLogger } from "@millosaurs/prettylogs";
-
-// Automatically configures based on NODE_ENV
-const logger = createEnvironmentLogger();
-
-// Development: colorful, verbose
-// Production: JSON format, structured logging
-logger.info("Environment-specific logging");
 ```
 
 ## Log Levels
 
-| Level   | Numeric | Description                  | Color    |
-| ------- | ------- | ---------------------------- | -------- |
-| TRACE   | 0       | Detailed trace information   | Purple   |
-| DEBUG   | 1       | Debug information            | Orange   |
-| INFO    | 2       | General information messages | Blue     |
-| WARN    | 3       | Warning messages             | Yellow   |
-| ERROR   | 4       | Error messages               | Red      |
-| FATAL   | 5       | Fatal errors (exits process) | Dark Red |
-| SUCCESS | 2       | Success messages             | Green    |
+| Level   | Priority | Use Case                     | Color    |
+|---------|----------|------------------------------|----------|
+| TRACE   | 0        | Detailed debugging           | Purple   |
+| DEBUG   | 1        | Development information      | Orange   |
+| INFO    | 2        | General information          | Blue     |
+| WARN    | 3        | Warning messages             | Yellow   |
+| ERROR   | 4        | Error conditions             | Red      |
+| FATAL   | 5        | Critical failures            | Dark Red |
+| SUCCESS | 2        | Success confirmations        | Green    |
 
-## Advanced Examples
+## Configuration
 
-### Web Server Logging
+### Basic Configuration
+
+```javascript
+import { createLogger } from "@millosaurs/prettylogs";
+
+const logger = createLogger({
+  minLevel: "INFO",
+  timestamps: true,
+  colorize: true,
+  logFile: "./logs/app.log",
+  logFormat: "json",
+});
+```
+
+### Environment-Based Configuration
+
+```javascript
+import { createEnvironmentLogger } from "@millosaurs/prettylogs";
+
+// Automatically adjusts based on NODE_ENV
+const logger = createEnvironmentLogger();
+
+// Development: colorful console output, verbose logging
+// Production: JSON format, structured logging, file output
+logger.info("Environment-aware logging");
+```
+
+### Configuration Options
+
+```javascript
+{
+  // Logging levels
+  levels: ["DEBUG", "INFO", "WARN", "ERROR"],
+  minLevel: "INFO",
+
+  // Output format
+  timestamps: true,
+  colorize: true,
+  prettyPrint: true,
+  dateFormat: "iso", // iso | locale | unix | short
+
+  // Mode
+  mode: "normal", // silent | normal | verbose | debug
+
+  // File logging
+  logFile: "./logs/app.log",
+  logFormat: "text", // text | json | structured
+  maxFileSize: 10 * 1024 * 1024, // bytes
+  maxFiles: 5,
+  disableFileLogging: false,
+
+  // Performance
+  async: false,
+  bufferSize: 100,
+  flushInterval: 1000,
+
+  // Metadata
+  environment: "development",
+}
+```
+
+## Usage Examples
+
+### Child Loggers
+
+```javascript
+const parentLogger = createLogger({ timestamps: true });
+
+// Create child logger with namespace
+const requestLogger = parentLogger.child("req-abc123");
+const dbLogger = parentLogger.child("database");
+
+requestLogger.info("Processing request");
+dbLogger.debug("Query executed", { duration: 45 });
+```
+
+### Performance Monitoring
+
+```javascript
+// Simple timers
+logger.time("database-query");
+const result = await database.query("SELECT * FROM users");
+logger.timeEnd("database-query");
+// Output: database-query: 145ms
+
+// Functional timers with return value
+const stopTimer = logger.startTimer("api-request");
+const response = await fetch("/api/data");
+const duration = stopTimer();
+console.log(`Request took ${duration}ms`);
+
+// Memory profiling
+const stopProfile = logger.profile("memory-intensive-task");
+await processLargeDataset();
+stopProfile();
+// Output: memory-intensive-task completed in 2.5s
+//         Memory: +15.3 MB
+```
+
+### Data Formatting
+
+```javascript
+// Table output
+const users = [
+  { id: 1, name: "Alice", active: true },
+  { id: 2, name: "Bob", active: false },
+];
+logger.table(users);
+
+// JSON formatting
+logger.json({ user: data, timestamp: Date.now() });
+
+// Box formatting
+logger.box("Important Message\nServer started on port 3000");
+
+// Divider
+logger.divider("Section Break");
+```
+
+### Assertions
+
+```javascript
+logger.assert(user.id > 0, "User ID must be positive");
+logger.assert(data.length === expectedLength, "Data length mismatch");
+```
+
+### Grouped Logs
+
+```javascript
+logger.group("User Validation", () => {
+  logger.debug("Checking user credentials");
+  logger.debug("Validating permissions");
+  logger.success("Validation complete");
+});
+```
+
+### Spinners
+
+```javascript
+const stopSpinner = logger.spinner("Loading data...");
+await fetchData();
+stopSpinner();
+```
+
+## Production Usage
+
+### High-Performance Setup
+
+```javascript
+const logger = createLogger({
+  minLevel: "INFO",
+  colorize: false,
+  prettyPrint: false,
+  logFormat: "json",
+  async: true,
+  bufferSize: 500,
+  logFile: "./logs/app.log",
+  maxFileSize: 100 * 1024 * 1024, // 100MB
+  maxFiles: 20,
+});
+```
+
+### Express.js Integration
 
 ```javascript
 import express from "express";
@@ -130,186 +250,59 @@ const logger = createLogger({
 
 const app = express();
 
-// Request logging middleware
 app.use((req, res, next) => {
-  const requestLogger = logger.child(`req-${Date.now()}`);
-
-  requestLogger.info("Incoming request", {
+  const requestId = `req-${Date.now()}`;
+  req.logger = logger.child(requestId);
+  
+  req.logger.info("Request received", {
     method: req.method,
     url: req.originalUrl,
     ip: req.ip,
-    userAgent: req.get("User-Agent"),
   });
-
-  req.logger = requestLogger;
+  
   next();
 });
 
-app.get("/users", async (req, res) => {
+app.get("/api/users", async (req, res) => {
   const timer = req.logger.startTimer("fetch-users");
-
+  
   try {
-    const users = await getUsersFromDatabase();
+    const users = await db.getUsers();
     const duration = timer();
-
-    req.logger.success("Users fetched", {
-      count: users.length,
-      duration,
-    });
-
+    
+    req.logger.success("Users fetched", { count: users.length, duration });
     res.json(users);
   } catch (error) {
-    req.logger.error("Failed to fetch users", {
-      error: error.message,
-    });
+    req.logger.error("Failed to fetch users", { error: error.message });
     res.status(500).json({ error: "Internal server error" });
   }
 });
+
+app.listen(3000, () => {
+  logger.info("Server started", { port: 3000 });
+});
 ```
 
-### Microservice Logging
+### Microservice Pattern
 
 ```javascript
 import { createStructuredLogger } from "@millosaurs/prettylogs";
 
 const logger = createStructuredLogger("user-service", "1.2.3");
 
-// All logs include service metadata
+// All logs automatically include service metadata
 logger.info("Service starting", {
   port: 3000,
   environment: process.env.NODE_ENV,
 });
 
-// With correlation IDs
-const correlationId = "trace-123";
-const requestLogger = logger.child(correlationId);
-
-requestLogger.info("Processing request", {
-  endpoint: "/users/123",
-});
-```
-
-### Development Debugging
-
-```javascript
-import { createLogger } from "@millosaurs/prettylogs";
-
-const logger = createLogger({ mode: "debug" });
-
-// Group related operations
-logger.group("User Validation", () => {
-  logger.debug("Validating user data");
-  logger.assert(user.id > 0, "User ID must be positive");
-  logger.success("Validation passed");
-});
-
-// Display data in tables
-const users = [
-  { id: 1, name: "John", active: true },
-  { id: 2, name: "Jane", active: false },
-];
-logger.table(users);
-
-// Pretty-print JSON
-logger.json(complexObject, "DEBUG");
-
-// Box important messages
-logger.box("Development server ready!\nRunning on http://localhost:3000");
-```
-
-### Performance Monitoring
-
-```javascript
-// Simple timers
-logger.time("database-query");
-const result = await database.query("SELECT * FROM users");
-logger.timeEnd("database-query");
-
-// Functional timers
-const stopTimer = logger.startTimer("api-request");
-const response = await fetch("/api/data");
-const duration = stopTimer();
-
-// Memory profiling
-const stopProfile = logger.profile("memory-intensive-task");
-await processLargeDataset();
-stopProfile(); // Logs duration and memory usage
-```
-
-### File Logging with Rotation
-
-```javascript
-const logger = createLogger({
-  logFile: "./logs/app.log",
-  maxFileSize: 50 * 1024 * 1024, // 50MB
-  maxFiles: 10, // Keep 10 rotated files
-  logFormat: "json",
-  async: true, // Async file writing
-  bufferSize: 100, // Buffer 100 entries
-  flushInterval: 1000, // Flush every 1000ms
-});
-
-// Automatic rotation when size limit is reached
-logger.info("This will be logged to file");
-
-// Manual operations
-logger.rotateLogFile();
-logger.clearLogFile();
-console.log(`Log file size: ${logger.getLogFileSize()} bytes`);
-```
-
-## Configuration Options
-
-```javascript
-const logger = createLogger({
-  // Log levels
-  levels: ["DEBUG", "INFO", "WARN", "ERROR"], // Allowed levels
-  minLevel: "INFO", // Minimum level threshold
-
-  // Output formatting
-  timestamps: true, // Include timestamps
-  colorize: true, // Colored output
-  prettyPrint: true, // Pretty-print objects
-  dateFormat: "iso", // iso, locale, unix, short
-
-  // Behavior
-  mode: "normal", // silent, normal, verbose, debug
-
-  // File logging
-  logFile: "./logs/app.log", // Log file path
-  logFormat: "text", // text, json, structured
-  maxFileSize: 10 * 1024 * 1024, // 10MB default
-  maxFiles: 5, // Rotated files to keep
-
-  // Performance
-  async: false, // Enable async file writing
-  bufferSize: 100, // Buffer size for async
-  flushInterval: 1000, // Flush interval (ms)
-
-  // Environment
-  environment: "development", // Environment identifier
-});
-```
-
-## Production Best Practices
-
-### High-Performance Setup
-
-```javascript
-const logger = createLogger({
-  // Optimize for production
-  colorize: false, // Faster without colors
-  prettyPrint: false, // Compact object serialization
-  logFormat: "json", // Structured for log analysis
-  async: true, // Non-blocking file writes
-  bufferSize: 500, // Larger buffer for throughput
-  minLevel: "INFO", // Filter out debug logs
-
-  // File management
-  logFile: "./logs/app.log",
-  maxFileSize: 100 * 1024 * 1024, // 100MB files
-  maxFiles: 20, // Keep more history
-});
+// Request-scoped logging with correlation ID
+function handleRequest(correlationId, data) {
+  const requestLogger = logger.child(correlationId);
+  
+  requestLogger.info("Processing request", { data });
+  requestLogger.success("Request completed");
+}
 ```
 
 ### Error Handling
@@ -317,9 +310,16 @@ const logger = createLogger({
 ```javascript
 // Graceful shutdown
 process.on("SIGTERM", async () => {
-  logger.info("Shutting down gracefully");
-  await logger.flush(); // Ensure all logs are written
-  await logger.close(); // Close file handles
+  logger.info("Shutdown signal received");
+  await logger.flush();
+  await logger.close();
+  process.exit(0);
+});
+
+process.on("SIGINT", async () => {
+  logger.info("Interrupt signal received");
+  await logger.flush();
+  await logger.close();
   process.exit(0);
 });
 
@@ -329,75 +329,194 @@ process.on("uncaughtException", (error) => {
     message: error.message,
     stack: error.stack,
   });
-  // Process exits automatically after fatal log
+});
+
+process.on("unhandledRejection", (reason, promise) => {
+  logger.error("Unhandled rejection", {
+    reason,
+    promise,
+  });
 });
 ```
 
-### Structured Logging for Observability
+### Structured Logging
 
 ```javascript
-const logger = createStructuredLogger("api-gateway", "2.1.0");
+const logger = createLogger({
+  logFormat: "structured",
+  timestamps: true,
+});
 
-// Add consistent metadata
+// Custom formatter for additional metadata
 logger.setFormatter((entry) => {
   return JSON.stringify({
     ...entry,
-    version: "2.1.0",
+    version: process.env.APP_VERSION,
     deployment: process.env.DEPLOYMENT_ID,
     region: process.env.AWS_REGION,
   });
 });
 
-// Log with correlation
-function withCorrelation(correlationId, fn) {
-  const correlatedLogger = logger.child(correlationId);
-  return fn(correlatedLogger);
+logger.info("User action", {
+  userId: 123,
+  action: "purchase",
+  amount: 99.99,
+});
+```
+
+## File Logging
+
+### Basic File Logging
+
+```javascript
+const logger = createLogger({
+  logFile: "./logs/app.log",
+  logFormat: "text",
+});
+
+logger.info("This message will be logged to file");
+```
+
+### File Rotation
+
+```javascript
+const logger = createLogger({
+  logFile: "./logs/app.log",
+  maxFileSize: 50 * 1024 * 1024, // 50MB
+  maxFiles: 10, // Keep 10 rotated files
+});
+
+// Manual rotation
+logger.rotateLogFile();
+
+// Check file size
+const size = logger.getLogFileSize();
+console.log(`Log file size: ${size} bytes`);
+
+// Clear log file
+logger.clearLogFile();
+```
+
+### Async File Writing
+
+```javascript
+const logger = createLogger({
+  logFile: "./logs/app.log",
+  async: true,
+  bufferSize: 100,
+  flushInterval: 1000,
+});
+
+// Ensure all logs are written
+await logger.flush();
+
+// Close file handles
+await logger.close();
+```
+
+## Advanced Features
+
+### Dynamic Configuration
+
+```javascript
+const logger = createLogger({ minLevel: "INFO" });
+
+// Change configuration at runtime
+logger.setConfig({
+  minLevel: "DEBUG",
+  colorize: false,
+});
+
+// Get current configuration
+const config = logger.getConfig();
+console.log(config);
+```
+
+### Custom Formatters
+
+```javascript
+logger.setFormatter((entry) => {
+  return `[${entry.level}] ${entry.timestamp} - ${entry.message}`;
+});
+```
+
+### Level Checking
+
+```javascript
+if (logger.isLevelEnabled("DEBUG")) {
+  const expensiveData = computeExpensiveDebugData();
+  logger.debug("Debug data", expensiveData);
 }
 ```
 
-## Testing Integration
+### Stream Writing
+
+```javascript
+import { createWriteStream } from "fs";
+
+const customStream = createWriteStream("./custom.log");
+logger.writeToStream(customStream);
+```
+
+## Testing
+
+### Test-Friendly Configuration
 
 ```javascript
 import { createLogger } from "@millosaurs/prettylogs";
 
-// Test-friendly logger
 const testLogger = createLogger({
-  mode: "silent", // No console output during tests
-  logFile: "./test-logs.log", // Optional file logging for debugging
+  mode: "silent",
+  disableFileLogging: true,
 });
 
-// Mock for unit tests
+// Use in tests without console output
+testLogger.info("This won't appear in test output");
+```
+
+### Mocking
+
+```javascript
+// Jest example
 const mockLogger = {
   info: jest.fn(),
   error: jest.fn(),
   warn: jest.fn(),
-  // ... other methods
+  debug: jest.fn(),
+  success: jest.fn(),
+};
+
+// Vitest example
+const mockLogger = {
+  info: vi.fn(),
+  error: vi.fn(),
+  warn: vi.fn(),
 };
 ```
 
 ## Performance
 
-PrettyLogs is optimized for high-performance applications:
+Optimized for high-throughput applications:
 
-- **50,000+ ops/sec** - Basic logging operations
-- **Zero-copy** string formatting for simple messages
-- **Async file I/O** - Non-blocking file operations
-- **Smart filtering** - Early exit for disabled log levels
-- **Memory efficient** - Minimal memory allocation per log
-- **Circular reference safe** - Handles complex objects gracefully
+- 50,000+ operations per second
+- Async file I/O for non-blocking writes
+- Efficient memory usage with buffering
+- Early exit for disabled log levels
+- Zero-copy string operations
+- Circular reference handling
 
 ## Migration Guide
 
-### From Console.log
+### From console.log
 
 ```javascript
 // Before
-console.log("User logged in", userId);
-console.error("Database error:", error);
+console.log("User logged in:", userId);
+console.error("Error:", error);
 
 // After
 logger.info("User logged in", { userId });
-logger.error("Database error", { error: error.message });
+logger.error("Error occurred", { error: error.message });
 ```
 
 ### From Winston
@@ -408,7 +527,9 @@ const winston = require("winston");
 const logger = winston.createLogger({
   level: "info",
   format: winston.format.json(),
-  transports: [new winston.transports.File({ filename: "app.log" })],
+  transports: [
+    new winston.transports.File({ filename: "app.log" }),
+  ],
 });
 
 // After
@@ -425,12 +546,125 @@ const logger = createLogger({
 ```javascript
 // Before
 const pino = require("pino");
-const logger = pino({ level: "info" });
+const logger = pino({
+  level: "info",
+});
 
 // After
 const { createLogger } = require("@millosaurs/prettylogs");
-const logger = createLogger({ minLevel: "INFO" });
+const logger = createLogger({
+  minLevel: "INFO",
+});
 ```
+
+### From Bunyan
+
+```javascript
+// Before
+const bunyan = require("bunyan");
+const logger = bunyan.createLogger({
+  name: "myapp",
+  level: "info",
+});
+
+// After
+const { createLogger } = require("@millosaurs/prettylogs");
+const logger = createLogger({
+  minLevel: "INFO",
+});
+```
+
+## API Reference
+
+### Logger Methods
+
+**Basic Logging**
+```javascript
+logger.trace(message, ...args)
+logger.debug(message, ...args)
+logger.info(message, ...args)
+logger.warn(message, ...args)
+logger.error(message, ...args)
+logger.fatal(message, ...args)
+logger.success(message, ...args)
+```
+
+**Performance Monitoring**
+```javascript
+logger.time(label)                  // Start a timer
+logger.timeEnd(label)               // End a timer
+logger.startTimer(label)            // Returns function to stop timer
+logger.profile(label)               // Returns function to stop profiling
+```
+
+**Data Formatting**
+```javascript
+logger.table(data)                  // Display data in table format
+logger.json(data, level)            // Pretty-print JSON
+logger.box(message)                 // Display message in a box
+logger.divider(label)               // Display horizontal divider
+logger.group(label, callback)       // Group related logs
+```
+
+**Utilities**
+```javascript
+logger.assert(condition, message)   // Log error if condition is false
+logger.spinner(message)             // Show spinner, returns stop function
+logger.clear()                      // Clear console
+```
+
+**Logger Management**
+```javascript
+logger.child(namespace)             // Create child logger
+logger.setConfig(config)            // Update configuration
+logger.getConfig()                  // Get current configuration
+logger.setFormatter(formatter)      // Set custom formatter
+logger.setLevel(level)              // Set minimum log level
+logger.isLevelEnabled(level)        // Check if level is enabled
+```
+
+**File Operations**
+```javascript
+logger.flush()                      // Flush buffered logs (async)
+logger.close()                      // Close file handles (async)
+logger.rotateLogFile()              // Manually rotate log file
+logger.clearLogFile()               // Clear log file
+logger.getLogFileSize()             // Get log file size in bytes
+logger.writeToStream(stream)        // Write to custom stream
+```
+
+### Factory Functions
+
+```javascript
+import {
+  createLogger,
+  createEnvironmentLogger,
+  createStructuredLogger,
+  logger, // Default logger instance
+} from "@millosaurs/prettylogs";
+
+// Create custom logger
+const customLogger = createLogger(config);
+
+// Create environment-aware logger
+const envLogger = createEnvironmentLogger();
+
+// Create structured logger with service metadata
+const serviceLogger = createStructuredLogger(serviceName, version);
+
+// Use default logger
+logger.info("Using default logger");
+```
+
+## Examples
+
+Check out the [examples directory](./examples/) for complete working examples:
+
+- **Web Server** - Express.js integration with request logging
+- **Microservice** - Structured logging with correlation IDs
+- **CLI Application** - Command-line tool logging patterns
+- **Error Handling** - Production error handling patterns
+- **Performance** - Timer and profiling examples
 
 ## Development
 
@@ -465,18 +699,23 @@ npm run typecheck     # TypeScript type checking
 node benchmarks/run.js    # Run performance benchmarks
 ```
 
-## API Documentation
+## TypeScript Support
 
-For detailed API documentation, see [docs/API.md](./docs/API.md).
+Full TypeScript definitions included:
 
-## Examples
+```typescript
+import { Logger, LoggerConfig, LogLevel } from "@millosaurs/prettylogs";
 
-Check out the [examples directory](./examples/) for complete working examples:
+const config: LoggerConfig = {
+  minLevel: "INFO",
+  timestamps: true,
+  colorize: true,
+};
 
-- [Web Server](./examples/web-server.js) - Express.js integration
-- [Microservice](./examples/microservice.js) - Structured logging
-- [CLI Application](./examples/cli-app.js) - Command-line tool logging
-- [Error Handling](./examples/error-handling.js) - Production error patterns
+const logger: Logger = createLogger(config);
+
+logger.info("TypeScript support", { typed: true });
+```
 
 ## Contributing
 
@@ -496,31 +735,28 @@ npm test
 
 MIT License - see [LICENSE](./LICENSE) file for details.
 
-## Acknowledgments
-
-- **Chalk** - For beautiful terminal colors
-- **Node.js Community** - For inspiration and best practices
-- **Contributors** - Everyone who has contributed to making this library better
-
 ## Support
 
-- [Documentation](https://prettylogs.shrivatsav.dev)
-- [Issue Tracker](https://github.com/Millosaurs/prettylogs/issues)
-- [Discussions](https://github.com/Millosaurs/prettylogs/discussions)
-- [Email Support](mailto:support@prettylogs.dev)
+- **Documentation**: [prettylogs.shrivatsav.dev](https://prettylogs.shrivatsav.dev)
+- **Issue Tracker**: [GitHub Issues](https://github.com/Millosaurs/prettylogs/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/Millosaurs/prettylogs/discussions)
 
 ## Roadmap
 
-- [ ] **Plugin System** - Custom formatters and outputs
-- [ ] **Log Streaming** - WebSocket and SSE support
-- [ ] **Metrics Integration** - Prometheus and StatsD
-- [ ] **Cloud Logging** - AWS CloudWatch, Google Cloud Logging
-- [ ] **Log Aggregation** - ELK Stack integration
-- [ ] **Performance Dashboard** - Real-time logging metrics
-- [ ] **VS Code Extension** - Enhanced development experience
+- Plugin system for custom formatters and outputs
+- Log streaming with WebSocket and SSE support
+- Metrics integration with Prometheus and StatsD
+- Cloud logging integration (AWS CloudWatch, Google Cloud Logging)
+- ELK Stack integration for log aggregation
+- Performance dashboard for real-time logging metrics
+- VS Code extension for enhanced development experience
+
+## Acknowledgments
+
+Built with modern Node.js best practices and inspired by the logging needs of production applications.
 
 ---
 
-Made by [Millosaurs](https://github.com/Millosaurs)
+**Made by [Millosaurs](https://github.com/Millosaurs)**
 
-**Star this repository if you find it useful!**
+If you find this library useful, please consider starring the repository on GitHub.

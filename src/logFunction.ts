@@ -279,7 +279,7 @@ export class LoggerImpl implements Logger {
   private getDefaultConfig(): Required<LoggerConfig> {
     return {
       levels: ["TRACE", "DEBUG", "INFO", "WARN", "ERROR", "FATAL", "SUCCESS"],
-      minLevel: "DEBUG",
+      minLevel: "TRACE",
       timestamps: false,
       mode: "normal",
       logFile: "",
